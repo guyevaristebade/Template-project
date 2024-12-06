@@ -3,7 +3,7 @@ import compression from 'compression'
 import cookieParser from "cookie-parser";
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import {UserRouter} from "../routes";
+import { UserRouter } from "../routes";
 
 
 export const app : Express = express();

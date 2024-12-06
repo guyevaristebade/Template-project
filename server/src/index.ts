@@ -2,8 +2,9 @@ import { app } from './app'
 import dotenv from "dotenv";
 import { connectDB } from './utils';
 
-const PORT = process.env.PORT || 3000;
 dotenv.config();
+
+const PORT = process.env.PORT ;
 
 
 connectDB().then(() => {
