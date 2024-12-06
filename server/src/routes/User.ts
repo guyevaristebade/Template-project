@@ -67,18 +67,20 @@ UserRouter.post('/login', async (req: Request, res: Response) => {
 });
 
 UserRouter.get('/', authenticated, async (req, res) => {
-    let response : ResponseType = {
-        success: true,
-    };
-
     const token = req.cookies['farm-token'];
+    const user = (req as any).user;
 
-    if (token) {
-        response.data = { user: (req as any).user, token };
-        response.status = 200;
-    }
-
-    res.send(response);
+    return res.status(200).send({
+        success: true,
+        data: {
+            user : {
+                _id : user.user._id,
+                username : user.user.username,
+                permissions : user.user.permissions
+            },
+            token
+        }
+    });
 });
 
 UserRouter.delete('/', authenticated, (req: Request, res: Response) => {
